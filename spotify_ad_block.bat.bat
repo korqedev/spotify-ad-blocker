@@ -16,6 +16,10 @@ set "YELLOW=%ESC%[93m"
 set "RED=%ESC%[91m"
 set "GRAY=%ESC%[90m"
 
+:: Get Windows version
+for /f "tokens=4-5 delims=. " %%a in ('ver') do set "WINVER=%%a.%%b"
+for /f "tokens=3 delims=[ " %%a in ('ver') do set "WINBUILD=%%a"
+
 echo.
 echo.
 echo %CYAN%   ##  ##   ####   ## ##    ####   #####   #####   #####   ##  ##%RESET%
@@ -29,8 +33,22 @@ echo %GRAY%   ==========================================================%RESET%
 echo %BOLD%%WHITE%    SPOTIFY OPTIMIZATION + SPICETIFY INSTALLER  %GRAY%// KORQDEV%RESET%
 echo %GRAY%   ==========================================================%RESET%
 echo %GRAY%    User: %CYAN%%USERNAME%  %GRAY%^|  Machine: %CYAN%%COMPUTERNAME%%RESET%
+echo %GRAY%    OS:   %CYAN%Windows %WINVER%  %GRAY%^|  Build:   %CYAN%%WINBUILD%%RESET%
 echo %GRAY%   ==========================================================%RESET%
 echo.
+
+:: ---- ADMIN CHECK ----
+net session >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo %GRAY%   [%YELLOW%!%GRAY%]  %YELLOW%Warning: Not running as Administrator.%RESET%
+    echo %GRAY%       Some steps may fail. Right-click the file and%RESET%
+    echo %GRAY%       select %WHITE%"Run as Administrator"%GRAY% for best results.%RESET%
+    echo.
+) else (
+    echo %GRAY%   [%GREEN%OK%GRAY%]  Running as Administrator.%RESET%
+    echo.
+)
+
 echo %GRAY%    [%CYAN%1/3%GRAY%]  Preparing environment...%RESET%
 echo %GRAY%    [%CYAN%2/3%GRAY%]  Fetching latest Spicetify build...%RESET%
 echo %GRAY%    [%CYAN%3/3%GRAY%]  Installing and applying optimizations...%RESET%
@@ -72,7 +90,18 @@ if /i "%CONSENT%"=="Y" (
     echo %GRAY%   [-]  Skipping ping. No data sent.%RESET%
 )
 
+:: ---- COUNTDOWN ----
 echo.
+echo %GRAY%   ----------------------------------------------------------%RESET%
+echo %WHITE%    Installation starting in...%RESET%
+echo.
+for /L %%i in (5,-1,1) do (
+    echo %CYAN%      %%i...%RESET%
+    timeout /t 1 >nul
+)
+echo %GREEN%      GO!%RESET%
+echo.
+
 echo %GRAY%   [%CYAN%~%GRAY%]  Launching Spicetify installer...%RESET%
 echo.
 
@@ -98,9 +127,14 @@ if %ERRORLEVEL% NEQ 0 (
 echo.
 echo %GRAY%   ==========================================================%RESET%
 echo %GRAY%   [%GREEN%OK%GRAY%]  Installation complete!%RESET%
-echo %GRAY%   [%GREEN%OK%GRAY%]  Spicetify is ready - open Spotify to get started.%RESET%
+echo %GRAY%   [%GREEN%OK%GRAY%]  Launching Spotify for you...%RESET%
 echo.
 echo %CYAN%         Thanks for using korqdev's optimizer.%RESET%
 echo %GRAY%   ==========================================================%RESET%
 echo.
+
+:: ---- OPEN SPOTIFY ----
+timeout /t 2 >nul
+start "" "%APPDATA%\Spotify\Spotify.exe"
+
 pause
