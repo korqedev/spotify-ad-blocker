@@ -1,0 +1,137 @@
+# 🎵 Spotify Ad Block Installer
+
+A lightweight Windows installer that automatically installs and configures Spotify ad-blocking enhancements using Spicetify.
+
+Designed to be simple, fast, and user-friendly with:
+
+* ✅ Automatic administrator elevation
+* ✅ Internet connectivity checks
+* ✅ PowerShell verification
+* ✅ Animated installer UI
+* ✅ Live runtime timer
+* ✅ Progress tracking
+* ✅ Detailed logging
+* ✅ Error handling with codes
+* ✅ Installation summary screen
+
+---
+
+## 📸 Features
+
+### Modern Installer Experience
+
+* Animated startup sequence
+* Step-by-step installation process
+* Countdown timers
+* Progress bar animations
+* Runtime tracking
+* Clean terminal interface
+
+### Reliability
+
+* Automatically requests Administrator privileges
+* Verifies internet connection before installation
+* Checks required dependencies
+* Logs all actions to a local file
+* Displays clear error messages
+
+### Safety
+
+* No telemetry
+* No Discord webhooks
+* No data collection
+* Local logging only
+
+---
+
+## 🚀 Installation
+
+### Option 1 — Download Release
+
+1. Go to the Releases page.
+2. Download the latest `.bat` file.
+3. Right-click and select **Run as Administrator**.
+4. Follow the on-screen instructions.
+
+### Option 2 — Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+```
+
+Run:
+
+```cmd
+spotify_ad_block.bat
+```
+
+---
+
+## 📋 Requirements
+
+* Windows 10 / Windows 11
+* Spotify Desktop Installed
+* Internet Connection
+* PowerShell Enabled
+
+---
+
+## 📊 Logging
+
+Installation logs are automatically stored in:
+
+```text
+%TEMP%\spotify_install.log
+```
+
+If an error occurs, the log file will automatically open for troubleshooting.
+
+---
+
+## ⚠ Disclaimer
+
+This project is provided for educational and personal use only.
+
+Spotify, Spicetify, and all related trademarks belong to their respective owners.
+
+The project is not affiliated with, endorsed by, or sponsored by Spotify.
+
+Use at your own risk.
+
+---
+
+## 🛠 Error Codes
+
+| Code | Description                     |
+| ---- | ------------------------------- |
+| 101  | Internet connection unavailable |
+| 102  | Spotify not detected            |
+| 103  | PowerShell unavailable          |
+| 104  | Installation failed             |
+| 105  | Permission denied               |
+
+---
+
+## 📈 Version
+
+Current Version:
+
+```text
+v1.4
+```
+
+---
+
+## 🤝 Contributing
+
+Pull requests, bug reports, and suggestions are welcome.
+
+If you find an issue, open an Issue and include your installation log.
+
+---
+
+## ⭐ Support
+
+If you find this project useful, consider giving the repository a star.
+
+It helps others discover the project and supports future updates.
